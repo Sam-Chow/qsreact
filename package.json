@@ -3,7 +3,20 @@
   "version": "0.1.0",
   "description": "⛱ this is a quite simple react, just for fun!",
   "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "build": "yarn run clean && webpack"
+  },
   "repository": "git@github.com:Sam-Chow/qsreact.git",
   "author": "oucsamchow@gmail.com",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "rimraf": "^2.6.2",
+    "webpack": "^3.10.0"
+  }
 }

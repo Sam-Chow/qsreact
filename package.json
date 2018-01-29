@@ -1,0 +1,9 @@
+{
+  "name": "qsreact",
+  "version": "0.1.0",
+  "description": "⛱ this is a quite simple react, just for fun!",
+  "main": "index.js",
+  "repository": "git@github.com:Sam-Chow/qsreact.git",
+  "author": "oucsamchow@gmail.com",
+  "license": "MIT"
+}

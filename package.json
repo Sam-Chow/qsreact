@@ -4,8 +4,10 @@
   "description": "⛱ this is a quite simple react, just for fun!",
   "main": "index.js",
   "scripts": {
+    "precommit": "yarn run build",
     "clean": "rimraf dist/*",
-    "build": "yarn run clean && webpack"
+    "build": "yarn run clean && webpack",
+    "build:example": "cross-env EXAMPLE=true yarn run build"
   },
   "repository": "git@github.com:Sam-Chow/qsreact.git",
   "author": "oucsamchow@gmail.com",
@@ -16,6 +18,8 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "cross-env": "^5.1.3",
+    "husky": "^0.14.3",
     "rimraf": "^2.6.2",
     "webpack": "^3.10.0"
   }

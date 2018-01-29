@@ -412,8 +412,7 @@ var reconcile = function reconcile(element, dom, instance) {
   return nextInstance;
 };
 
-exports.render = render;
-exports.createElement = createElement;
+exports.default = { render: render, createElement: createElement, Component: Component };
 exports.Component = Component;
 
 /***/ })

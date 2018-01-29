@@ -3,11 +3,11 @@ const path = require('path')
 
 const config = {
   entry: {
-    client: path.resolve(__dirname, 'src/index.js'),
+    qsreact: path.resolve(__dirname, 'src/index.js'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'qsreact.js',
+    filename: '[name].js',
   },
   resolve: {
     alias: {
@@ -23,6 +23,10 @@ const config = {
       },
     ],
   },
+}
+
+if (process.env.EXAMPLE) {
+  config.entry.client = path.resolve(__dirname, 'example/index.js')
 }
 
 module.exports = config

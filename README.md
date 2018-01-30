@@ -14,3 +14,9 @@
 1. state for class Component (actually I have tried to do this)
 1. to bind event handlers to the virtual dom automaticlly
 1. and more
+
+## build and run
+
+build: `yarn run build`
+
+wanna see how qsreact works and have a try? just `yarn run dev:example`

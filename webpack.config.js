@@ -26,7 +26,22 @@ const config = {
 }
 
 if (process.env.EXAMPLE) {
-  config.entry.client = path.resolve(__dirname, 'example/index.js')
+  const HtmlWebpackPlugin = require('html-webpack-plugin')
+  const configForExample = {
+    entry: {
+      client: path.resolve(__dirname, 'example/index.js'),
+    },
+    devServer: {
+      inline: true,
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        title: 'example for qsreact',
+        template: path.resolve(__dirname, 'example/index.html'),
+      }),
+    ],
+  }
+  Object.assign(config, configForExample)
 }
 
 module.exports = config

@@ -7,7 +7,8 @@
     "precommit": "yarn run build",
     "clean": "rimraf dist/*",
     "build": "yarn run clean && webpack",
-    "build:example": "cross-env EXAMPLE=true yarn run build"
+    "dev:example":
+      "cross-env EXAMPLE=true webpack-dev-server --content-base dist/ --hot"
   },
   "repository": "git@github.com:Sam-Chow/qsreact.git",
   "author": "oucsamchow@gmail.com",
@@ -19,8 +20,10 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "cross-env": "^5.1.3",
+    "html-webpack-plugin": "^2.30.1",
     "husky": "^0.14.3",
     "rimraf": "^2.6.2",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
   }
 }

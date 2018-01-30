@@ -31,6 +31,10 @@ if (process.env.EXAMPLE) {
     entry: {
       client: path.resolve(__dirname, 'example/index.js'),
     },
+    output: {
+      path: path.resolve(__dirname, 'build'),
+      filename: '[name].js',
+    },
     devServer: {
       inline: true,
     },

@@ -8,7 +8,7 @@
     "clean": "rimraf dist/*",
     "build": "yarn run clean && webpack",
     "dev:example":
-      "cross-env EXAMPLE=true webpack-dev-server --content-base dist/ --hot"
+      "cross-env EXAMPLE=true webpack-dev-server --content-base build/ --hot"
   },
   "repository": "git@github.com:Sam-Chow/qsreact.git",
   "author": "oucsamchow@gmail.com",

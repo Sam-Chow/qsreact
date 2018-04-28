@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -74,13 +74,79 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _TextComponent = __webpack_require__(6);
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var _TextComponent2 = _interopRequireDefault(_TextComponent);
+
+var _DOMComponent = __webpack_require__(7);
+
+var _DOMComponent2 = _interopRequireDefault(_DOMComponent);
+
+var _CompositeComponent = __webpack_require__(8);
+
+var _CompositeComponent2 = _interopRequireDefault(_CompositeComponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var instantiateComponent = function instantiateComponent(element) {
+  if (!element) {
+    return null;
+  } else if (typeof element === 'string') {
+    return new _TextComponent2.default(element);
+  } else if ((typeof element === 'undefined' ? 'undefined' : _typeof(element)) !== 'object') {
+    throw new Error('wrong element type');
+  } else if (typeof element.type === 'string') {
+    return new _DOMComponent2.default(element);
+  } else if (typeof element.type === 'function') {
+    return new _CompositeComponent2.default(element);
+  }
+};
+
+exports.default = instantiateComponent;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Component = undefined;
+
+var _createElement = __webpack_require__(2);
+
+var _createElement2 = _interopRequireDefault(_createElement);
+
+var _Component = __webpack_require__(3);
+
+var _Component2 = _interopRequireDefault(_Component);
+
+var _render = __webpack_require__(4);
+
+var _render2 = _interopRequireDefault(_render);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = { render: _render2.default, createElement: _createElement2.default, Component: _Component2.default };
+exports.Component = _Component2.default;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var createElement = function createElement(type, props) {
   for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
@@ -94,19 +160,137 @@ var createElement = function createElement(type, props) {
   return { type: type, props: props };
 };
 
-var instantiateComponent = function instantiateComponent(element) {
-  if (!element) {
-    return null;
-  } else if (typeof element === 'string') {
-    return new TextComponent(element);
-  } else if ((typeof element === 'undefined' ? 'undefined' : _typeof(element)) !== 'object') {
-    throw new Error('wrong element type');
-  } else if (typeof element.type === 'string') {
-    return new DOMComponent(element);
-  } else if (typeof element.type === 'function') {
-    return new CompositeComponent(element);
+exports.default = createElement;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Component = function () {
+  function Component() {
+    _classCallCheck(this, Component);
+
+    this.isReactComponent = true;
   }
+
+  _createClass(Component, [{
+    key: 'setState',
+    value: function setState(partialState) {
+      var state = _extends({}, this.state || {}, partialState);
+      this._internalInstance.update();
+    }
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {}
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'componentWillUpdate',
+    value: function componentWillUpdate() {}
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {}
+  }, {
+    key: 'render',
+    value: function render() {
+      throw new Error('Component must have a render method!');
+    }
+  }]);
+
+  return Component;
+}();
+
+Component.prototype.isReactComponent = true;
+
+exports.default = Component;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _instantiateComponent = __webpack_require__(5);
+
+var _instantiateComponent2 = _interopRequireDefault(_instantiateComponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var reconcile = function reconcile(element, dom, instance) {
+  var nextInstance = void 0;
+  if (!instance) {
+    nextInstance = (0, _instantiateComponent2.default)(element);
+    dom.appendChild(nextInstance.mount());
+  } else {
+    nextInstance = instance;
+    nextInstance.update(element);
+  }
+
+  return nextInstance;
 };
+
+var rootInstance = null;
+var render = function render(element, containerDOM) {
+  rootInstance = reconcile(element, containerDOM, rootInstance);
+};
+
+exports.default = render;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _instantiateComponent = __webpack_require__(0);
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_instantiateComponent).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var TextComponent = function () {
   function TextComponent(element) {
@@ -118,12 +302,12 @@ var TextComponent = function () {
   }
 
   _createClass(TextComponent, [{
-    key: 'getHostNode',
+    key: "getHostNode",
     value: function getHostNode() {
       return this.node;
     }
   }, {
-    key: 'update',
+    key: "update",
     value: function update(nextElement) {
       this.currentElement = nextElement;
       var oldNode = this.node;
@@ -132,7 +316,7 @@ var TextComponent = function () {
       parentNode.replaceChild(this.node, oldNode);
     }
   }, {
-    key: 'mount',
+    key: "mount",
     value: function mount() {
       var node = document.createTextNode(this.currentElement);
       this.node = node;
@@ -142,6 +326,31 @@ var TextComponent = function () {
 
   return TextComponent;
 }();
+
+exports.default = TextComponent;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _instantiateComponent = __webpack_require__(0);
+
+var _instantiateComponent2 = _interopRequireDefault(_instantiateComponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var DOMComponent = function () {
   function DOMComponent(element) {
@@ -207,7 +416,7 @@ var DOMComponent = function () {
           prevChildComponentInstances[i].update(nextChildElement);
           nextChildComponentInstances.push(prevChildComponentInstances[i]);
         } else {
-          var nextChildComponentInstance = instantiateComponent(nextChildElement);
+          var nextChildComponentInstance = (0, _instantiateComponent2.default)(nextChildElement);
           // replace old node with new node
           this.node.replaceChild(prevChildComponentInstances[i].getHostNode(), nextChildComponentInstance.mount());
           nextChildComponentInstances.push(nextChildComponentInstance);
@@ -219,7 +428,7 @@ var DOMComponent = function () {
       if (diffLen > 0) {
         while (i < nextLen) {
           var _nextChildElement = nextChildElements[i];
-          var _nextChildComponentInstance = instantiateComponent(_nextChildElement);
+          var _nextChildComponentInstance = (0, _instantiateComponent2.default)(_nextChildElement);
           nextChildComponentInstances.push(_nextChildComponentInstance);
           this.node.appendChild(_nextChildComponentInstance.mount());
           i++;
@@ -261,6 +470,29 @@ var DOMComponent = function () {
   return DOMComponent;
 }();
 
+exports.default = DOMComponent;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _instantiateComponent = __webpack_require__(0);
+
+var _instantiateComponent2 = _interopRequireDefault(_instantiateComponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var CompositeComponent = function () {
   function CompositeComponent(element) {
     _classCallCheck(this, CompositeComponent);
@@ -283,9 +515,9 @@ var CompositeComponent = function () {
   }, {
     key: 'createPublicInstance',
     value: function createPublicInstance() {
-      var _currentElement2 = this.currentElement,
-          type = _currentElement2.type,
-          props = _currentElement2.props;
+      var _currentElement = this.currentElement,
+          type = _currentElement.type,
+          props = _currentElement.props;
 
       if (!(type.prototype && type.prototype.isReactComponent)) {
         return null;
@@ -298,25 +530,25 @@ var CompositeComponent = function () {
   }, {
     key: 'createChildComponentInstance',
     value: function createChildComponentInstance() {
-      var _currentElement3 = this.currentElement,
-          type = _currentElement3.type,
-          props = _currentElement3.props;
+      var _currentElement2 = this.currentElement,
+          type = _currentElement2.type,
+          props = _currentElement2.props;
 
       if (type.prototype && type.prototype.isReactComponent) {
         this.publicInstance.componentWillMount();
-        this.childComponentInstance = instantiateComponent(this.publicInstance.render());
+        this.childComponentInstance = (0, _instantiateComponent2.default)(this.publicInstance.render());
         this.publicInstance.componentDidMount();
       } else {
-        this.childComponentInstance = instantiateComponent(type(props));
+        this.childComponentInstance = (0, _instantiateComponent2.default)(type(props));
       }
     }
   }, {
     key: 'updateChildComponentInstances',
-    value: function updateChildComponentInstances(_ref2) {
-      var nextProps = _ref2.props;
-      var _currentElement4 = this.currentElement,
-          type = _currentElement4.type,
-          props = _currentElement4.props;
+    value: function updateChildComponentInstances(_ref) {
+      var nextProps = _ref.props;
+      var _currentElement3 = this.currentElement,
+          type = _currentElement3.type,
+          props = _currentElement3.props;
 
       if (type.prototype && type.prototype.isReactComponent) {
         this.publicInstance.componentWillUpdate(nextProps);
@@ -357,63 +589,7 @@ var CompositeComponent = function () {
   return CompositeComponent;
 }();
 
-var Component = function () {
-  function Component() {
-    _classCallCheck(this, Component);
-
-    this.isReactComponent = true;
-  }
-
-  _createClass(Component, [{
-    key: 'setState',
-    value: function setState(partialState) {
-      var state = _extends({}, this.state || {}, partialState);
-      this._internalInstance.update();
-    }
-  }, {
-    key: 'componentWillMount',
-    value: function componentWillMount() {}
-  }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {}
-  }, {
-    key: 'componentWillUpdate',
-    value: function componentWillUpdate() {}
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {}
-  }, {
-    key: 'render',
-    value: function render() {
-      throw new Error('Component must have a render method!');
-    }
-  }]);
-
-  return Component;
-}();
-
-Component.prototype.isReactComponent = true;
-
-var rootInstance = null;
-var render = function render(element, containerDOM) {
-  rootInstance = reconcile(element, containerDOM, rootInstance);
-};
-
-var reconcile = function reconcile(element, dom, instance) {
-  var nextInstance = void 0;
-  if (!instance) {
-    nextInstance = instantiateComponent(element);
-    dom.appendChild(nextInstance.mount());
-  } else {
-    nextInstance = instance;
-    nextInstance.update(element);
-  }
-
-  return nextInstance;
-};
-
-exports.default = { render: render, createElement: createElement, Component: Component };
-exports.Component = Component;
+exports.default = CompositeComponent;
 
 /***/ })
 /******/ ]);

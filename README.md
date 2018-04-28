@@ -1,5 +1,7 @@
 # qsreact
 
+[![Build Status](https://travis-ci.org/Sam-Chow/qsreact.svg?branch=master)](https://travis-ci.org/Sam-Chow/qsreact)
+
 ⛱ this is a *q*uite *s*imple react, just for fun!
 
 ## features 👀
